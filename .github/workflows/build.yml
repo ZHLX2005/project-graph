@@ -67,13 +67,9 @@ jobs:
       - name: Build app (without Tauri bundle)
         run: pnpm run build:no-tauri
 
-  build-tauri:
+  build-tauri-windows:
     needs: [check]
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -106,29 +102,18 @@ jobs:
         with:
           workspaces: "app/src-tauri -> target"
 
-      - name: Linux - Install dependencies
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt install -y \
-            build-essential \
-            pkg-config \
-            libssl-dev \
-            libgtk-3-dev \
-            libwebkit2gtk-4.1-dev \
-            libappindicator3-dev \
-            librsvg2-dev \
-            patchelf \
-            qt6-base-dev \
-            qt6-declarative-dev \
-            libxcb1-dev \
-            libudev-dev \
-            qt6-webengine-dev
-
       - name: Disable updater artifacts for CI
         run: node ./.github/scripts/disable-tauri-updater.mjs
 
-      - name: Build Tauri app
+      - name: Build Tauri app (Windows NSIS installer)
         run: pnpm --filter @graphif/project-graph tauri:build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-graph-windows-installer
+          path: app/src-tauri/target/release/bundle/nsis/*.exe
+          if-no-files-found: error
+          retention-days: 30
