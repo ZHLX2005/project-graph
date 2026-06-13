@@ -120,6 +120,12 @@ jobs:
             librsvg2-dev \
             patchelf
 
+      - name: Setup CUDA Toolkit
+        if: matrix.os == 'ubuntu-latest'
+        uses: Jimver/cuda-toolkit@v0.2.35
+        with:
+          cuda: "12.9.0"
+
       - name: Disable updater artifacts for CI
         run: |
           node -e "const fs=require('fs'); const p='app/src-tauri/tauri.conf.json'; const c=JSON.parse(fs.readFileSync(p,'utf8')); c.bundle.createUpdaterArtifacts=false; fs.writeFileSync(p, JSON.stringify(c,null,2)+'\\n');"
