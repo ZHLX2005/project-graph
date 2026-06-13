@@ -17,11 +17,11 @@ export class StageExport {
   private readonly tabExporter: TabExporter;
   private readonly mermaidExporter: MermaidExporter;
 
-  constructor(private readonly project: Project) {
-    this.plainTextExporter = new PlainTextExporter(project);
-    this.markdownExporter = new MarkdownExporter(project);
-    this.tabExporter = new TabExporter(project);
-    this.mermaidExporter = new MermaidExporter(project);
+  constructor(_project: Project) {
+    this.plainTextExporter = new PlainTextExporter(_project);
+    this.markdownExporter = new MarkdownExporter(_project);
+    this.tabExporter = new TabExporter(_project);
+    this.mermaidExporter = new MermaidExporter(_project);
   }
 
   /**

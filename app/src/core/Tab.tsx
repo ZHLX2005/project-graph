@@ -44,16 +44,20 @@ export abstract class Tab extends React.Component<Record<string, never>, Record<
 
   // EventEmitter proxy methods
   on(event: string | number, listener: (...args: any[]) => void): this {
-    this.eventEmitter.on(event, listener);
+    this.eventEmitter.on(String(event), listener);
     return this;
   }
 
   emit(event: string | number, ...args: any[]): boolean {
-    return this.eventEmitter.emit(event, ...args);
+    return this.eventEmitter.emit(String(event), ...args);
   }
 
   removeAllListeners(event?: string | number): this {
-    this.eventEmitter.removeAllListeners(event);
+    if (event === undefined) {
+      this.eventEmitter.removeAllListeners();
+    } else {
+      this.eventEmitter.removeAllListeners(String(event));
+    }
     return this;
   }
 

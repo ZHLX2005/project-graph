@@ -24,6 +24,7 @@ type TabName =
   | "linuxRuntime"
   | "keybinds"
   | "customization"
+  | "themes"
   | "about"
   | "extensions"
   | "account"

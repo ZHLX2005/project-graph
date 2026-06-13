@@ -1110,7 +1110,7 @@ export function GlobalMenu() {
               </Item>
             </SubContent>
           </Sub>
-          <Item onClick={() => SettingsWindow.open("appearance")}>
+          <Item onClick={() => SettingsWindow.open("themes")}>
             <Palette />
             {t("settings.appearance")}
           </Item>

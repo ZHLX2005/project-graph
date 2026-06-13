@@ -28,7 +28,7 @@ interface DonationData {
 }
 
 // 此列表为2025年的捐赠记录，自2026年起将不再写入源代码，转为云控。
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 const donations_: DonationData[] = [
   { user: "购买服务器", note: "zty012", amount: -480 },
   // { user: "域名 2y.nz", note: "zty012", amount: -151.8 },
@@ -251,6 +251,7 @@ export default function CreditsTab() {
       })
       .catch((e) => {
         console.log(e);
+        setDonations(donations_);
         setIsError(true);
       })
       .finally(() => {
