@@ -347,6 +347,7 @@ export const categories = {
       "webpQuality",
       "compressImageToBlackAndWhite",
       "blackAndWhiteThreshold",
+      "wrapImageInGroup",
       "clipboardPasteMode",
     ],
   },

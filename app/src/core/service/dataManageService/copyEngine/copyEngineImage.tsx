@@ -8,6 +8,7 @@ import { MouseLocation } from "../../controlService/MouseLocation";
 import { Settings } from "@/core/service/Settings";
 import { applyBlackAndWhite } from "../imageUtils";
 import { toast } from "sonner";
+import { Section } from "@/core/stage/stageObject/entity/Section";
 
 export class CopyEngineImage {
   constructor(private project: Project) {}
@@ -96,6 +97,12 @@ export class CopyEngineImage {
     });
 
     this.project.stageManager.add(imageNode);
+
+    if (Settings.wrapImageInGroup) {
+      const section = Section.fromEntities(this.project, [imageNode]);
+      section.text = "";
+      this.project.stageManager.add(section);
+    }
   }
 
   private async compressImageBlob(blob: Blob): Promise<Blob> {

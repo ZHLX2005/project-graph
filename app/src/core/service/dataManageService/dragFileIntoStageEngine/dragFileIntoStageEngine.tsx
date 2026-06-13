@@ -13,6 +13,7 @@ import { PathString } from "@/utils/pathString";
 import { DetailsManager } from "@/core/stage/stageObject/tools/entityDetailsManager";
 import { Settings } from "@/core/service/Settings";
 import { applyBlackAndWhite } from "../imageUtils";
+import { Section } from "@/core/stage/stageObject/entity/Section";
 
 /**
  * 处理文件拖拽到舞台的引擎
@@ -254,6 +255,12 @@ export namespace DragFileIntoStageEngine {
     });
 
     project.stageManager.add(imageNode);
+
+    if (Settings.wrapImageInGroup) {
+      const section = Section.fromEntities(project, [imageNode]);
+      section.text = "";
+      project.stageManager.add(section);
+    }
   }
 
   /** @deprecated 请使用 handleDropImage */
