@@ -118,7 +118,12 @@ jobs:
             libwebkit2gtk-4.1-dev \
             libappindicator3-dev \
             librsvg2-dev \
-            patchelf
+            patchelf \
+            qt6-base-dev \
+            qt6-declarative-dev \
+            libxcb1-dev \
+            libudev-dev \
+            qt6-webengine-dev
 
       - name: Disable updater artifacts for CI
         run: node ./.github/scripts/disable-tauri-updater.mjs
