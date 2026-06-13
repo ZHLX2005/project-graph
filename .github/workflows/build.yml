@@ -73,7 +73,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -119,12 +119,6 @@ jobs:
             libappindicator3-dev \
             librsvg2-dev \
             patchelf
-
-      - name: Setup CUDA Toolkit
-        if: matrix.os == 'ubuntu-latest'
-        uses: Jimver/cuda-toolkit@v0.2.35
-        with:
-          cuda: "12.9.0"
 
       - name: Disable updater artifacts for CI
         run: node ./.github/scripts/disable-tauri-updater.mjs

@@ -123,8 +123,11 @@ pub fn run() {
             #[cfg(target_os = "linux")]
             qt_ipc_response,
             take_pending_open_files,
+            #[cfg(feature = "ocr")]
             cmd::paddle::get_aha_directory,
+            #[cfg(feature = "ocr")]
             cmd::paddle::paddleocr_vl_1_6_model_exists,
+            #[cfg(feature = "ocr")]
             cmd::paddle::paddleocr_vl_1_6_generate
         ]);
 

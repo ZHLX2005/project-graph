@@ -36,17 +36,22 @@ tauri-plugin-system-info = "2.0.9"
 tauri-plugin-deep-link = "2"
 regex = "1.12.3"
 
+# OCR (PaddleOCR-VL via aha) is heavy: pulls in sentencepiece (native C++)
+# and aha/candle which needs GPU on Linux. Gate it behind a feature so CI
+# builds can skip it. Production releases should enable `--features ocr`.
+aha = { version = "0.2.6", optional = true }
+
 [target.'cfg(target_os = "macos")'.dependencies]
-aha = { version = "0.2.6", features = ["metal"] }
+aha = { version = "0.2.6", features = ["metal"], optional = true }
 
 [target.'cfg(target_os = "linux")'.dependencies]
-aha = { version = "0.2.6", features = ["cuda"] }
+aha = { version = "0.2.6", optional = true }
 cxx = "1.0.126"
 cxx-qt = "0.7"
 cxx-qt-lib = "0.7"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-aha = { version = "0.2.6" }
+aha = { version = "0.2.6", optional = true }
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-cli = "2"
@@ -60,3 +65,8 @@ lto = true        # Enables link-time-optimizations.
 opt-level = "s"   # Prioritizes small binary size. Use `3` if you prefer speed.
 panic = "abort"   # Higher performance by disabling panic handlers.
 strip = true      # Ensures debug symbols are removed.
+
+[features]
+# Enables OCR (PaddleOCR-VL via aha). Heavy: pulls in sentencepiece native C++.
+# CI builds without this. Real releases enable with: cargo tauri build --features ocr
+ocr = ["dep:aha"]
