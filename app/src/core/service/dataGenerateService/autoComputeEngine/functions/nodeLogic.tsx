@@ -700,6 +700,7 @@ export namespace NodeLogic {
       const defaultStr = fatherNodes[1].text;
       const delayTime = parseInt(fatherNodes[2].text);
       const selfUUID = fatherNodes[3].uuid;
+      void selfUUID; // reserved for future delay logic
       if (delayTime < 0) {
         return ["延迟时间不能为负数"];
       }
@@ -710,19 +711,7 @@ export namespace NodeLogic {
         return [str];
       }
       // state 是当前逻辑节点本身存储的状态
-      let state = delayStates.get(selfUUID);
-      if (state === undefined) {
-        delayStates.set(selfUUID, []);
-        state = [];
-      }
-      // 在未来的(step + delayTime)刻时把str输出
-      // TODO: step
-      // state[step + delayTime] = str;
-      // if (state[step] !== undefined) {
-      //   const result = state[step];
-      //   delete state[step];
-      //   return [result];
-      // }
+      // TODO: step (delay logic not yet implemented)
       return [defaultStr];
     }
     return ["输入的节点格式必须都是TextNode"];

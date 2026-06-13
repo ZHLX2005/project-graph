@@ -180,7 +180,7 @@ export default function TextImportWindow() {
             <div className="mb-2 font-medium">
               {fileContent.fileName} ({fileContent.content.length} 字)
             </div>
-            <div className="text-muted-foreground max-h-32 overflow-auto whitespace-pre-wrap text-sm">
+            <div className="text-muted-foreground max-h-32 overflow-auto text-sm whitespace-pre-wrap">
               {fileContent.content.slice(0, 500)}
               {fileContent.content.length > 500 && "..."}
             </div>

@@ -151,12 +151,11 @@ export class StraightEdgeRenderer extends EdgeRendererClass {
   }
 
   public getNormalStageSvg(edge: LineEdge): React.ReactNode {
-    let lineBody: React.ReactNode = <></>;
     let textNode: React.ReactNode = <></>;
     const edgeColor = edge.color.equals(Color.Transparent)
       ? this.project.stageStyleManager.currentStyle.StageObjectBorder
       : edge.color;
-    lineBody = SvgUtils.line(edge.bodyLine.start, edge.bodyLine.end, edgeColor, 2);
+    const lineBody = SvgUtils.line(edge.bodyLine.start, edge.bodyLine.end, edgeColor, 2);
 
     if (edge.text.trim() !== "") {
       textNode = SvgUtils.textFromCenterWithStroke(

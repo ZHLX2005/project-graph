@@ -21,7 +21,7 @@ export class CopyEngineText {
   constructor(private project: Project) {}
 
   async copyEnginePastePlainText(item: string) {
-    let entity: Entity | null = null;
+    let entity: Entity | null;
     const collisionBox = new CollisionBox([
       new Rectangle(this.project.renderer.transformView2World(MouseLocation.vector()), Vector.getZero()),
     ]);
@@ -113,7 +113,7 @@ export class CopyEngineText {
           const pasteMode = Settings.textNodePasteSizeAdjustMode;
 
           let sizeAdjust: "auto" | "manual";
-          let isBigContent = false;
+          let isBigContent: boolean;
 
           switch (pasteMode) {
             case "manual":

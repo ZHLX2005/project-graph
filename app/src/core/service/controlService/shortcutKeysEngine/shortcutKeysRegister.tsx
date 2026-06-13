@@ -1910,11 +1910,7 @@ export const allKeyBinds: KeyBindItem[] = [
         imageNode.compressImage();
       }
       project!.historyManager.recordStep();
-      toast.success(
-        selectedImageNodes.length === 1
-          ? "已压缩图片"
-          : `已压缩 ${selectedImageNodes.length} 张图片`,
-      );
+      toast.success(selectedImageNodes.length === 1 ? "已压缩图片" : `已压缩 ${selectedImageNodes.length} 张图片`);
     },
   },
 

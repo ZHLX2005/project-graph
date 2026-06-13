@@ -91,7 +91,7 @@ export default function GenerateNodeTree() {
       <div className="flex justify-end gap-2">
         <Button onClick={handleGenerate} disabled={isLoading} className="relative">
           {isLoading && (
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
           )}
           {isLoading ? `${t("actions.generating")}...` : t("actions.confirm")}
         </Button>
@@ -165,7 +165,7 @@ export function GenerateNodeTreeByMarkdown() {
       <div className="flex justify-end gap-2">
         <Button onClick={handleGenerate} disabled={isLoading} className="relative">
           {isLoading && (
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
           )}
           {isLoading ? `${t("actions.generating")}...` : t("actions.confirm")}
         </Button>
@@ -246,7 +246,7 @@ export function GenerateNodeGraph() {
       <div className="flex justify-end gap-2">
         <Button onClick={handleGenerate} disabled={isLoading} className="relative">
           {isLoading && (
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
           )}
           {isLoading ? `${t("actions.generating")}...` : t("actions.confirm")}
         </Button>
@@ -331,7 +331,7 @@ export function GenerateNodeMermaid() {
       <div className="flex justify-end gap-2">
         <Button onClick={handleGenerate} disabled={isLoading} className="relative">
           {isLoading && (
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin"></span>
           )}
           {isLoading ? `${t("actions.generating")}...` : t("actions.confirm")}
         </Button>

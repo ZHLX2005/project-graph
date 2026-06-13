@@ -252,7 +252,7 @@ export class SelectChangeEngine {
     const selectedEntities = this.project.stageManager
       .getSelectedEntities()
       .filter((entity) => entity instanceof ConnectableEntity);
-    let selectedNode: ConnectableEntity | null = null;
+    let selectedNode: ConnectableEntity | null;
     if (selectedEntities.length === 0) {
       const nearestNode = this.selectMostNearLocationNode(this.project.camera.location);
       if (nearestNode) {

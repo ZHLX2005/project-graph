@@ -406,8 +406,8 @@ export class VerticalPolyEdgeRenderer extends EdgeRendererClass {
     }
   }
   public getNormalStageSvg(edge: LineEdge): React.ReactNode {
-    let lineBody: React.ReactNode = <></>;
     let textNode: React.ReactNode = <></>;
+    let lineBody: React.ReactNode;
     const edgeColor = edge.color.equals(Color.Transparent)
       ? this.project.stageStyleManager.currentStyle.StageObjectBorder
       : edge.color;
