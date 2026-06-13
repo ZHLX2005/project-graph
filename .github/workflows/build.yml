@@ -92,6 +92,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Build workspace packages
+        run: pnpm nx run-many -t build --projects=@graphif/data-structures,@graphif/serializer,@graphif/shapes,extprg-types
+
+      - name: Build frontend
+        run: pnpm run build:no-tauri
+
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
